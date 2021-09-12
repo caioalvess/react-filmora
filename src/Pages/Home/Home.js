@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import Loading from "../Loading/Loading";
+import "./home.css";
+import Footer from "../../Components/Footer/Footer";
 
 export class Home extends Component {
   constructor(props) {
@@ -25,9 +29,27 @@ export class Home extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Página Home</h1>
-      </div>
+      <>
+        <div className="container">
+          {this.state.filmes.length === 0 && <Loading />}
+          {this.state.filmes.length !== 0 && (
+            <div className="listaFilmes">
+              {this.state.filmes.map((filme) => {
+                return (
+                  <>
+                    <article className="filme" key={filme.id}>
+                      <strong>{filme.nome}</strong>
+                      <img src={filme.foto} alt="Capa" />
+                      <Link to={`/filme/${filme.id}`}>Acessar</Link>
+                    </article>
+                  </>
+                );
+              })}
+            </div>
+          )}
+        </div>
+        {this.state.filmes.length !== 0 && <Footer />}
+      </>
     );
   }
 }

@@ -1,0 +1,15 @@
+.filme-info {
+  margin-top: 50px;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 170px);
+}
+
+.filme-info h1 {
+  text-align: center;
+}
+
+.filme-info img {
+  border-radius: 50px;
+}
